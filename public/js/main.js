@@ -1,9 +1,7 @@
 var app = angular.module('csvChart', []);
-
 app.controller('csvController', function($scope,dataService) {
   $scope.series=[];
- 
-  var datasets=[];
+   var datasets=[];
   $scope.dataset=[];
   $scope.title = 'Upload your csv';
   $scope.fileContent=undefined;
@@ -24,8 +22,7 @@ app.controller('csvController', function($scope,dataService) {
   })
   }
 var updateChart=function(){
-
-       chart.render();        
+  chart.render();        
 }
 var renderChart=function(){
 var chart = new CanvasJS.Chart("chartContainer",{
@@ -45,7 +42,6 @@ var chart = new CanvasJS.Chart("chartContainer",{
         });
         chart.render();
 }
-//renderChart();
 $scope.updateChart=function(){
  var index = $scope.series.indexOf(this.selectedSeries);
  $scope.dataset=datasets[index].dataset;
@@ -70,42 +66,3 @@ $scope.series.push(i[0]);
 }
 });
 
-app.directive('fileReader', function() {
-  return {
-    scope: {
-      fileReader:"=",
-      ctj:"="
-
-    },
-    link: function(scope, element) {
-      element.on('change', function(changeEvent) {
-        var files = changeEvent.target.files;
-        if (files.length) {
-          var r = new FileReader();
-          r.onload = function(e) {
-              var contents = e.target.result;
-              scope.$apply(function () {
-                scope.fileReader = contents;
-                scope.ctj(contents);
-                scope.testing = contents;
-              });
-          };
-          
-          r.readAsText(files[0]);
-       
-         
-
-        }
-      });
-    }
-  };
-
-});
-app.service('dataService',function($http){
-  this.getJsonData=function(content){
-   return $http.post('api/convertToJson',content);
-  }
-  this.postJsonData=function(content){
-    return $http.post('api/saveJson',content);
-   }
-});
