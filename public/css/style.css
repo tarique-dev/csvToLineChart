@@ -1,0 +1,17 @@
+body {padding-left: 5%;
+    padding-right: 5%;
+    background: #cccccc36;}
+
+.content {
+background: #efefef;
+border: 1px solid;
+padding: 20px;
+margin-top: 25px;
+line-height: 1.8;
+}
+select,label{
+font-size: 21px;
+}
+#chartContainer{
+height: 300px; width: 100;margin-top: 24px;
+}

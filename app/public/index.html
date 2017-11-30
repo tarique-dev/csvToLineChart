@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html ng-app="csvChart">
+    <head>
+      <link rel="stylesheet" href="css/style.css" />
+<script src="js/angular.min.js"></script>
+<script type="text/javascript" src="https://canvasjs.com/assets/script/jquery-1.11.1.min.js"></script>
+<script type="text/javascript" src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+<script src="js/main.js"></script>
+    </head>
+
+  <body ng-controller="csvController">
+    
+    <h1>{{title}}</h1>
+    <input type="file" file-reader="fileContent" ctj="convertToJson" accept=".csv"/>
+    <div ng-if="fileContent" class="content">
+      <label style="display: block;
+      text-decoration: underline;">CSV preview</label>
+      {{fileContent}}
+     
+    </div>
+    <div ng-if="fileContent">
+     <label >Select a series from drop down to render a line chart</label>
+     <select ng-model="selectedSeries"  ng-change="updateChart()">
+        <option ng-repeat="item in series" value="{{item}}">{{item}}</option>
+        </select>
+        
+        <button  ng-click="saveToServer()">Save to server</button>
+      </div>
+        <div id="chartContainer"></div>
+  </body>
+
+</html>
+
