@@ -11,5 +11,5 @@ Disclaimer:
 2.Code needs to be more flexible
 
 
-
+npm install to install all dependencies
 .
